@@ -1,0 +1,37 @@
+{
+  "manifest_version": "0.4",
+  "name": "flow-learning-system",
+  "display_name": "Flow Learning System",
+  "version": "0.1.0",
+  "description": "Write lessons as JSON and build motion-graphics textbooks with sentence-synced TTS, for any subject.",
+  "long_description": "One sentence = one scene. An AI writes lesson JSON; this server validates it, runs example code, renders 3D figures with Blender (with projected hotspots), synthesizes Korean/English narration with Supertonic and per-sentence timing, and builds a single-file HTML player whose graphs, equations, word tiles, images and code move exactly when the voice reaches each sentence. Optional: pip extra [tts] for audio, Blender for render_3d, Mono/.NET for C# verification.",
+  "author": { "name": "ghlee0786", "url": "https://github.com/ghlee0786" },
+  "repository": { "type": "git", "url": "https://github.com/ghlee0786/flow-learning-system" },
+  "homepage": "https://github.com/ghlee0786/flow-learning-system",
+  "documentation": "https://github.com/ghlee0786/flow-learning-system#readme",
+  "license": "MIT",
+  "keywords": ["education", "e-learning", "tts", "motion-graphics", "blender", "lesson", "textbook"],
+  "server": {
+    "type": "uv",
+    "entry_point": "mcpb_server.py"
+  },
+  "tools": [
+    { "name": "authoring_guide", "description": "Lesson format, widgets, motion rules, writing rules" },
+    { "name": "course_init", "description": "Create a new course folder" },
+    { "name": "course_status", "description": "Scenes, issues and audio state per lesson" },
+    { "name": "lesson_get", "description": "Read a lesson JSON" },
+    { "name": "lesson_save", "description": "Validate and save a lesson" },
+    { "name": "lesson_validate", "description": "Validate a lesson" },
+    { "name": "speech_preview", "description": "Show what TTS will actually read per scene" },
+    { "name": "pronunciation_add", "description": "Register readings for words the voice can't say" },
+    { "name": "code_verify", "description": "Run example code and compare with on-screen console output" },
+    { "name": "audio_synthesize", "description": "Synthesize narration and per-sentence timing" },
+    { "name": "render_3d", "description": "Render a Blender scene script to an image with hotspots" },
+    { "name": "assets_list", "description": "List course images and hotspots" },
+    { "name": "course_build", "description": "Build the single-file HTML player" }
+  ],
+  "compatibility": {
+    "platforms": ["win32", "darwin", "linux"],
+    "runtimes": { "python": ">=3.10" }
+  }
+}

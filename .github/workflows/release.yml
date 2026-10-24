@@ -1,0 +1,77 @@
+# 태그(v*)를 올리면: 테스트 → MCPB 번들 → GitHub Release → 공식 MCP Registry 게시
+name: Release & publish to MCP Registry
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to (re)publish, e.g. v0.1.0"
+        required: true
+
+permissions:
+  contents: write   # Release 생성
+  id-token: write   # MCP Registry GitHub OIDC 로그인
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test
+        run: |
+          pip install -e . pytest
+          pytest -q
+
+      - name: Check versions match the tag
+        run: |
+          VER="${TAG#v}"
+          echo "VER=$VER" >> "$GITHUB_ENV"
+          test "$(jq -r .version manifest.json)" = "$VER"
+          grep -q "^version = \"$VER\"" pyproject.toml
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pack MCPB bundle
+        run: |
+          mkdir -p out
+          npx -y @anthropic-ai/mcpb validate manifest.json
+          npx -y @anthropic-ai/mcpb pack . "out/flow-learning-system-$VER.mcpb"
+          echo "SHA=$(sha256sum "out/flow-learning-system-$VER.mcpb" | cut -d' ' -f1)" >> "$GITHUB_ENV"
+
+      - name: GitHub Release
+        run: |
+          F="out/flow-learning-system-$VER.mcpb"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$F" --clobber
+          else
+            gh release create "$TAG" "$F" --title "Flow Learning System $VER" \
+              --notes "MCPB bundle for one-click install in MCP clients. See README for pip install and examples."
+          fi
+
+      - name: Fill server.json
+        run: |
+          URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/$TAG/flow-learning-system-$VER.mcpb"
+          jq --arg v "$VER" --arg u "$URL" --arg s "$SHA" \
+            '.version=$v | .packages[0].identifier=$u | .packages[0].fileSha256=$s' server.json > server.tmp
+          mv server.tmp server.json
+          cat server.json
+
+      - name: Publish to MCP Registry
+        run: |
+          curl -sSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish

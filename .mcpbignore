@@ -1,0 +1,17 @@
+.git/
+.github/
+.venv/
+venv/
+build/
+dist/
+docs/
+examples/
+tests/
+tools/
+**/__pycache__/
+*.egg-info/
+*.zip
+push-to-github.*
+README.*.md
+server.json
+glama.json
