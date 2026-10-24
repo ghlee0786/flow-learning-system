@@ -1,0 +1,25 @@
+{
+  "id": 1,
+  "group": "영어",
+  "title": "수동태 만들기",
+  "sub": "능동태를 수동태로 바꾸는 세 단계",
+  "ops": [
+    {"op": "part", "title": "능동태 문장 뜯어보기"},
+    {"op": "code", "lang": "en", "run": false, "src": "Tom wrote the letter.\nThe letter was written by Tom.\nThe letters were written by Tom.\nShe helped me.\nI was helped by her.\nHe arrived.\nMany cars are made in Korea."},
+    {"op": "say", "line": 1, "text": "능동태 문장 {en|Tom wrote the letter.}는 톰이 편지를 썼다는 뜻입니다.", "head": "{en|Tom wrote the letter.}", "board": {"tokens": [[["Tom", "S", "g1"], ["wrote", "V", "bad"], ["the letter", "O", "g2"]], {"big": true}]}},
+    {"op": "say", "line": 1, "text": "행동을 한 주어는 {en|Tom}, 동사는 {en|wrote}, 행동을 받은 목적어는 {en|the letter}입니다.", "head": "주어 · 동사 · 목적어", "board": {"seq": [{"tokens": [[["Tom", "주어 S", "g1"], ["wrote", "동사 V", "bad"], ["the letter", "목적어 O", "g2"]], {"big": true}]}, {"cards": [[["능동태", "주어가 행동을 한다", "g1"], ["수동태", "주어가 행동을 받는다", "g2"]]]}]}},
+    {"op": "part", "title": "세 단계로 바꾸기"},
+    {"op": "say", "line": 1, "text": "1단계, 목적어 {en|the letter}를 문장 맨 앞의 주어 자리로 옮깁니다.", "head": "① 목적어 → 주어 자리", "board": {"tokens": [[["the letter", "S", "g2"], ["wrote", "V", "bad"], ["Tom", "?", "dim"]], {"big": true}]}},
+    {"op": "say", "line": 2, "text": "2단계, 동사를 be동사 더하기 과거분사로 바꿉니다. 원래 문장이 과거이므로 {en|was}를 쓰고, {en|write}의 과거분사 {en|written}을 붙입니다.", "head": "② 동사 → be + 과거분사", "board": {"seq": [{"tokens": [[["the letter", "S", "g2"], ["was written", "be + p.p.", "bad"], ["Tom", "?", "dim"]], {"big": true}]}, {"tbl": [["원형", "과거", "과거분사 (p.p.)"], [["write", "wrote", "**written**"], ["make", "made", "**made**"], ["help", "helped", "**helped**"]], {"hl": [0]}]}]}},
+    {"op": "say", "line": 2, "text": "3단계, 원래 주어 {en|Tom}은 {en|by} 뒤로 보내 {en|by Tom}이 됩니다.", "head": "③ 원래 주어 → by + 목적격", "board": {"tokens": [[["the letter", "S", "g2"], ["was written", "V", "bad"], ["by Tom", "행위자", "g1"]], {"big": true}]}},
+    {"op": "say", "line": 2, "text": "완성된 수동태 문장은 {en|The letter was written by Tom.}입니다. 편지가 톰에 의해 쓰였다는 뜻입니다.", "head": "{en|The letter was written by Tom.}", "board": {"seq": [{"tokens": [[["The letter", "S", "g2"], ["was written", "V", "bad"], ["by Tom", "by + 행위자", "g1"]], {"big": true}]}, {"flow": [[["Tom wrote the letter.", "dim"], ["The letter was written by Tom.", "ok"]], {"labels": ["수동태"]}]}]}},
+    {"op": "part", "title": "주의할 점"},
+    {"op": "say", "line": 3, "text": "be동사는 새 주어의 수와 시제에 맞춥니다. 편지가 여러 장이면 {en|were}를 써서 {en|The letters were written by Tom.}이 됩니다.", "head": "be동사는 새 주어에 맞춘다", "board": {"seq": [{"tokens": [[["The letters", "S (복수)", "g2"], ["were written", "V", "bad"], ["by Tom", "행위자", "g1"]], {"big": true}]}, {"tbl": [["새 주어", "과거", "현재"], [["단수 (the letter)", "was", "is"], ["복수 (the letters)", "**were**", "are"]], {"hl": [1]}]}]}},
+    {"op": "say", "line": 4, "text": "목적어가 대명사이면 모양이 바뀝니다. {en|She helped me.}를 바꿔 보겠습니다.", "head": "{en|She helped me.}", "board": {"tokens": [[["She", "S", "g1"], ["helped", "V", "bad"], ["me", "O", "g2"]], {"big": true}]}},
+    {"op": "say", "line": 5, "text": "목적어 {en|me}는 주어 자리에서 {en|I}가 되고, 주어 {en|she}는 {en|by} 뒤에서 {en|her}가 됩니다. 그래서 {en|I was helped by her.}입니다.", "head": "{en|me → I,  she → by her}", "board": {"seq": [{"tokens": [[["I", "S", "g2"], ["was helped", "V", "bad"], ["by her", "행위자", "g1"]], {"big": true}]}, {"tbl": [["주격", "목적격"], [["I", "me"], ["she", "her"], ["he", "him"], ["they", "them"]], {"hl": [0, 1]}]}]}},
+    {"op": "say", "line": 6, "text": "목적어가 없는 문장은 수동태로 만들 수 없습니다. {en|He arrived.}에는 주어 자리로 옮길 목적어가 없기 때문입니다.", "head": "목적어가 없으면 수동태 불가", "board": {"seq": [{"tokens": [[["He", "S", "g1"], ["arrived", "V", "bad"]], {"big": true}]}, {"err": ["He was arrived. (X)"]}]}},
+    {"op": "say", "line": 7, "text": "행위자가 중요하지 않거나 모를 때는 {en|by} 부분을 생략합니다. {en|Many cars are made in Korea.}는 누가 만드는지보다 어디서 만드는지가 중요합니다.", "head": "by 행위자는 생략할 수 있다", "board": {"tokens": [[["Many cars", "S", "g2"], ["are made", "V", "bad"], ["in Korea", "장소", "g3"]], {"big": true}]}},
+    {"op": "nocode"},
+    {"op": "say", "text": "정리하면 수동태는 목적어를 주어로, 동사를 be동사와 과거분사로, 원래 주어를 {en|by} 뒤로 보내는 세 단계입니다.", "head": "수동태 = 세 단계", "board": {"flow": [[["목적어 → 주어", "g2"], ["동사 → be + p.p.", "bad"], ["주어 → by + 목적격", "g1"]]]}}
+  ]
+}

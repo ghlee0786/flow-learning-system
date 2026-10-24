@@ -1,0 +1,14 @@
+{
+  "title": "수동태 만들기",
+  "subtitle": "영어 · 문장 구조",
+  "language": "ko",
+  "code_lang": "text",
+  "voice": "F1",
+  "speed": 1.05,
+  "lessons": [
+    "lessons/01.json"
+  ],
+  "pronunciations": {
+    "be": "비"
+  }
+}

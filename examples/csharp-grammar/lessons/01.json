@@ -1,0 +1,32 @@
+{
+  "id": 1,
+  "group": "시작",
+  "title": "답안의 뼈대",
+  "sub": "Solution 클래스와 solution 메서드",
+  "ops": [
+    {"op": "part", "title": "틀 살펴보기"},
+    {"op": "code", "src": "\nusing System;\n\npublic class Solution {\n    public int solution(int a, int b) {\n        int answer = a + b;\n        return answer;\n    }\n}", "wrap": "none", "test": "class Program { static void Main() { Console.WriteLine(new Solution().solution(3, 4)); } }", "expect": ["7"]},
+    {"op": "say", "text": "프로그래머스의 씨샵 문제는 미리 주어진 틀 안에 답을 채우는 방식입니다. 이 틀이 어떻게 생겼는지 한 줄씩 보겠습니다.", "head": "주어진 틀 안에 답을 채운다", "board": {"cards": [[["클래스", "`Solution`"], ["메서드", "`solution(...)`"], ["채울 곳", "메서드 안쪽"]]]}},
+    {"op": "say", "line": 1, "text": "첫 줄 `using System`은 System이라는 이름 공간에 있는 기능을 짧은 이름으로 쓰겠다는 선언입니다.", "head": "using = 긴 이름 줄여 쓰기", "board": {"flow": [[["System.Console.WriteLine", "dim"], ["Console.WriteLine", "ok"]], {"labels": ["using System"]}]}},
+    {"op": "say", "line": 3, "text": "`public class Solution`은 Solution이라는 클래스를 만듭니다. 클래스는 관련된 코드를 한데 묶는 상자라고 생각하면 됩니다.", "head": "class = 코드를 담는 상자", "board": {"cards": [[["Solution", {"h": "<code>solution</code> 메서드가 들어 있음"}, "g1"]]]}},
+    {"op": "say", "line": 4, "text": "그 안에 있는 solution 메서드가 우리가 채워야 할 함수입니다.", "head": "채울 곳은 solution 메서드"},
+    {"op": "say", "line": 4, "text": "메서드의 첫 줄은 네 부분으로 나뉩니다. public은 밖에서 부를 수 있다는 뜻이고, int는 돌려줄 값의 형, solution은 이름, 괄호 안은 받을 값입니다.", "head": "public int solution(int a, int b)", "board": {"cards": [[["public", "밖에서 호출 가능", "g1"], ["int", "돌려줄 값의 형", "g2"], ["solution", "메서드 이름", "g3"], ["(int a, int b)", "받을 값 두 개", "hl"]]]}},
+    {"op": "part", "title": "실행되는 순서"},
+    {"op": "var", "name": "a", "value": 3, "type": "int"},
+    {"op": "var", "name": "b", "value": 4, "type": "int"},
+    {"op": "say", "line": 4, "text": "채점기는 입출력 예의 값을 넣어 이 메서드를 부릅니다. 예를 들어 a에 3, b에 4를 넣고 부르면, 두 값이 매개변수 상자에 들어갑니다.", "head": "solution(3, 4) 호출", "board": {"flow": [[["채점기", ""], ["solution(3, 4)", "hl"]], {"labels": ["호출"]}]}},
+    {"op": "var", "name": "answer", "value": 7, "type": "int"},
+    {"op": "say", "line": 5, "text": "`int answer = a + b`는 정수 상자 answer를 새로 만들고, 3 더하기 4, 즉 7을 넣습니다.", "head": "answer = 3 + 4", "eq": "answer = 3 + 4 = 7"},
+    {"op": "say", "line": 6, "text": "return은 값을 돌려주고 메서드를 끝냅니다. answer에 든 7이 채점기로 돌아갑니다.", "head": "return = 값을 돌려주고 끝", "ret": "7"},
+    {"op": "say", "text": "채점기는 돌려받은 7과 정답을 비교합니다. 화면에 출력한 값이 아니라 return한 값이 채점된다는 점이 중요합니다.", "head": "채점 대상은 return 값", "board": {"flow": [[["return 7", "ok"], ["정답 7과 비교", ""], ["통과", "ok"]]]}},
+    {"op": "clear"},
+    {"op": "part", "title": "자주 쓰는 using"},
+    {"op": "code", "src": "\nusing System;\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text;", "run": false},
+    {"op": "say", "line": 1, "text": "문제에 따라 필요한 using을 맨 위에 더 적습니다. 이 네 줄을 외워 두면 대부분의 문제를 풀 수 있습니다.", "head": "자주 쓰는 using 네 줄"},
+    {"op": "say", "line": 2, "text": "List, Dictionary, HashSet 같은 자료구조는 [[System.Collections.Generic|시스템 콜렉션스 제네릭]]에 있습니다.", "head": "자료구조 = Collections.Generic", "board": {"chips": [[["List", "g1"], ["Dictionary", "g1"], ["HashSet", "g1"], ["Stack", "g1"], ["Queue", "g1"]]]}},
+    {"op": "say", "line": 3, "text": "[[System.Linq|시스템 링크]]는 정렬, 합계, 최댓값 같은 편리한 메서드를 줍니다.", "head": "편의 메서드 = Linq", "board": {"chips": [[["OrderBy", "g2"], ["Sum", "g2"], ["Max", "g2"], ["Where", "g2"], ["Select", "g2"]]]}},
+    {"op": "say", "line": 4, "text": "[[System.Text|시스템 텍스트]]에는 문자열을 빠르게 이어 붙이는 StringBuilder가 있습니다.", "head": "문자열 조립 = Text", "board": {"chips": [[["StringBuilder", "g3"]]]}},
+    {"op": "nocode"},
+    {"op": "say", "text": "정리하면, 틀은 그대로 두고 메서드 안쪽만 채운 뒤 답을 return하면 됩니다. 값을 확인하고 싶을 때는 Console.WriteLine으로 출력해 볼 수 있고, 출력은 채점에 영향을 주지 않습니다.", "head": "틀은 그대로, 안쪽만 채우고 return", "board": {"cards": [[["그대로 둘 것", "using, class, 메서드 첫 줄"], ["채울 것", "메서드 안쪽", "g1"], ["채점되는 것", "return 값", "ok"]]]}}
+  ]
+}

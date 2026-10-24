@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "group": "생명과학",
+  "title": "동물 세포의 구조",
+  "sub": "세포 소기관과 하는 일",
+  "ops": [
+    {"op": "part", "title": "세포 들여다보기"},
+    {"op": "nocode"},
+    {"op": "say", "text": "동물 세포의 앞쪽 8분의 1을 잘라 내 안을 들여다본 모습입니다. 작은 기관들이 각자 맡은 일을 하며 세포를 움직입니다.", "head": "동물 세포 단면", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell"}]}},
+    {"op": "say", "text": "가장 바깥을 감싸는 얇은 막이 세포막입니다. 세포 안팎으로 드나드는 물질을 골라서 통과시킵니다.", "head": "세포막: 출입을 조절하는 경계", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"membrane": {"label": "세포막", "c": "hl"}}}]}},
+    {"op": "say", "text": "막 안을 채운 젤리 같은 부분은 세포질입니다. 여러 소기관이 이 안에 떠 있고, 많은 화학 반응이 여기서 일어납니다.", "head": "세포질: 소기관이 떠 있는 공간", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"membrane": {"label": "세포막", "c": "dim"}, "cytoplasm": {"label": "세포질", "c": "hl"}}}]}},
+    {"op": "part", "title": "핵: 유전 정보의 저장소"},
+    {"op": "say", "text": "가운데 보라색 덩어리가 핵입니다. 유전 정보인 디엔에이가 들어 있어 세포가 무엇을 만들지 지휘합니다.", "head": "핵: 세포의 지휘 본부", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"nucleus": {"label": "핵", "c": "hl"}}, "zoom": 1.7, "focus": "nucleus"}]}},
+    {"op": "say", "text": "핵 안의 진한 부분은 인입니다. 단백질을 만드는 공장인 리보솜의 재료를 만듭니다.", "head": "인: 리보솜 재료 생산", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"nucleus": {"label": "핵", "c": "dim"}, "nucleolus": {"label": "인", "c": "hl", "side": "l"}}, "zoom": 1.7, "focus": "nucleus"}]}},
+    {"op": "part", "title": "단백질을 만들어 보내는 길"},
+    {"op": "say", "text": "핵을 둘러싼 파란 판이 소포체이고, 표면에 붙은 작은 알갱이들이 리보솜입니다. 리보솜에서 단백질이 만들어집니다.", "head": "리보솜과 소포체", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"ribosome": {"label": "리보솜", "c": "hl"}, "er": {"label": "소포체", "c": "g1", "side": "l"}}, "zoom": 1.6, "focus": "er"}]}},
+    {"op": "say", "text": "초록색 납작한 주머니 묶음은 골지체입니다. 소포체에서 온 단백질을 다듬고 포장합니다.", "head": "골지체: 포장 센터", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"golgi": {"label": "골지체", "c": "hl"}}, "zoom": 1.6, "focus": "golgi"}]}},
+    {"op": "say", "text": "골지체 끝의 작은 방울은 소포로, 포장된 물질을 담아 세포막이나 다른 곳으로 실어 나릅니다.", "head": "소포: 배송 상자", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"golgi": {"label": "골지체", "c": "dim"}, "vesicle": {"label": "소포", "c": "hl"}}, "zoom": 1.6, "focus": "golgi"}]}},
+    {"op": "say", "text": "이 순서를 화살표로 이으면, 핵의 정보에 따라 리보솜이 만들고, 소포체가 옮기고, 골지체가 포장해, 소포가 보냅니다.", "head": "단백질이 만들어져 나가는 길", "board": {"seq": [{"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"nucleus": {"label": "① 핵", "c": "g3"}, "ribosome": {"label": "② 리보솜", "c": "g1"}, "golgi": {"label": "③ 골지체", "c": "ok"}, "vesicle": {"label": "④ 소포", "c": "hl"}}, "arrows": [{"from": "nucleus", "to": "ribosome", "c": "g3", "w": 5}, {"from": "ribosome", "to": "golgi", "c": "g1", "w": 5}, {"from": "golgi", "to": "vesicle", "c": "ok", "w": 5}]}]}, {"flow": [[["핵 · 정보", "g3"], ["리보솜 · 합성", "g1"], ["소포체 · 운반", "g1"], ["골지체 · 포장", "ok"], ["소포 · 배송", "hl"]]]}]}},
+    {"op": "part", "title": "에너지와 청소"},
+    {"op": "say", "text": "주황색 길쭉한 기관은 미토콘드리아입니다. 포도당을 산소로 분해해 세포가 쓰는 에너지를 만듭니다.", "head": "미토콘드리아: 발전소", "board": {"seq": [{"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"mitochondria": {"label": "미토콘드리아", "c": "hl"}}, "zoom": 1.6, "focus": "mitochondria"}]}, {"eq": ["포도당 + 산소 → 이산화 탄소 + 물 + 에너지"]}]}},
+    {"op": "say", "text": "붉은 구는 리소좀입니다. 소화 효소를 담고 있어 낡은 소기관이나 세포로 들어온 물질을 분해합니다.", "head": "리소좀: 분해와 청소", "board": {"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"lysosome": {"label": "리소좀", "c": "hl", "side": "l"}}, "zoom": 1.6, "focus": "lysosome"}]}},
+    {"op": "say", "text": "모든 소기관을 한 번에 보면 이렇습니다. 각 기관이 맡은 일을 표로 정리해 두세요.", "head": "한눈에 보기", "board": {"seq": [{"img": ["assets/cell.png", {"w": 720, "key": "cell", "spots": {"membrane": {"label": "세포막"}, "nucleus": {"label": "핵"}, "er": {"label": "소포체", "side": "l"}, "golgi": {"label": "골지체"}, "mitochondria": {"label": "미토콘드리아"}, "lysosome": {"label": "리소좀"}}}]}, {"tbl": [["소기관", "하는 일"], [["세포막", "물질 출입 조절"], ["핵", "유전 정보 저장, 활동 지휘"], ["리보솜", "단백질 합성"], ["소포체", "단백질 운반"], ["골지체", "포장과 분비"], ["미토콘드리아", "세포 호흡, 에너지 생산"], ["리소좀", "세포 내 소화"]]]}]}},
+    {"op": "say", "text": "식물 세포에는 이것들에 더해 세포벽, 엽록체, 큰 액포가 있습니다. 엽록체에서 광합성이 일어나고, 세포벽은 모양을 단단하게 지켜 줍니다.", "head": "식물 세포에만 있는 것", "board": {"cards": [[["세포벽", "세포막 바깥의 단단한 벽", "g2"], ["엽록체", "광합성으로 양분 생산", "ok"], ["큰 액포", "물과 노폐물 저장", "g1"]]]}}
+  ]
+}

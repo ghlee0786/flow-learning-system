@@ -1,0 +1,12 @@
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.venv/
+build/
+dist/
+examples/*/audio/
+examples/*/timing.json
+examples/*/dist/
+
+flow-learning-system.zip
+push-to-github.*
